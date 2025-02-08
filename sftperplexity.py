@@ -15,7 +15,7 @@ def compute_perplexity(model_name, test_text):
     return perplexity
 
 test_text = "The theory of relativity is one of the most important scientific discoveries of the 20th century."
-ppl_sft = compute_perplexity("Qwen/Qwen2.5-0.5B-SFT/checkpoint-395", test_text)
+ppl_sft = compute_perplexity("Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975", test_text)
 ppl_base = compute_perplexity("Qwen/Qwen2.5-0.5B", test_text)
 
 print(f"📊 Perplexity (Base Model): {ppl_base:.2f}")

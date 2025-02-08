@@ -5,7 +5,7 @@ from peft import LoraConfig, get_peft_model
 import torch
 
 # ✅ Load dataset
-dataset = load_dataset("trl-lib/Capybara", split="train[:20%]")
+dataset = load_dataset("trl-lib/Capybara", split="train")
 
 # ✅ Configure 4-bit quantization for memory-efficient training
 bnb_config = BitsAndBytesConfig(
@@ -16,7 +16,9 @@ bnb_config = BitsAndBytesConfig(
 )
 
 # ✅ Load quantized model
-model_name = "Qwen/Qwen2.5-0.5B"
+#openai-community/gpt2
+#model_name = "Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975"
+model_name = "openai-community/gpt2"
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config=bnb_config,  # Apply QLoRA optimization
@@ -59,15 +61,14 @@ if not trainable_params:
 
 # ✅ Configure training parameters
 training_args = SFTConfig(
-    output_dir="Qwen/Qwen2.5-0.5B-SFT",
+    output_dir="GPT-2-SFT",
     per_device_train_batch_size=1,  # Reduce batch size to fit in memory
     gradient_accumulation_steps=8,  # Accumulate gradients to reduce memory usage
     gradient_checkpointing=False,  # 🚨 Temporarily disabled to debug
     num_train_epochs=1,
-    logging_steps=25,
+    logging_steps=50,
     bf16=True,  # ✅ Use `bfloat16` (Fix FP16 issues)
     optim="paged_adamw_32bit",  # ✅ Optimizer optimized for QLoRA
-    report_to="none",
 )
 
 # ✅ Initialize trainer

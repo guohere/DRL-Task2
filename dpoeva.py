@@ -12,14 +12,14 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, AutoModelForSequen
 
 # ✅ Load Tokenizers
 tokenizer_base = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B")
-tokenizer_sft = AutoTokenizer.from_pretrained("Qwen2.5-0.5B-SFT/checkpoint-395")
-tokenizer_dpo = AutoTokenizer.from_pretrained("Qwen2.5-0.5B-DPO/checkpoint-500")
+tokenizer_sft = AutoTokenizer.from_pretrained("Qwen2.5-0.5B-SFT/checkpoint-1975")
+tokenizer_dpo = AutoTokenizer.from_pretrained("Qwen2.5-0.5B-DPO/checkpoint-5000")
 reward_tokenizer = AutoTokenizer.from_pretrained("Qwen2.5-0.5B-Reward/checkpoint-182")
 
 # ✅ Load Models
 model_base = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-0.5B")
-model_sft = AutoModelForCausalLM.from_pretrained("Qwen2.5-0.5B-SFT/checkpoint-395")
-model_dpo = AutoModelForCausalLM.from_pretrained("Qwen2.5-0.5B-DPO/checkpoint-500")
+model_sft = AutoModelForCausalLM.from_pretrained("Qwen2.5-0.5B-SFT/checkpoint-1975")
+model_dpo = AutoModelForCausalLM.from_pretrained("Qwen2.5-0.5B-DPO/checkpoint-5000")
 reward_model = AutoModelForSequenceClassification.from_pretrained("Qwen2.5-0.5B-Reward/checkpoint-182")
 
 # ✅ Define a test prompt

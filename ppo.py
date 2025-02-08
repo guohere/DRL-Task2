@@ -29,7 +29,7 @@ reward_model = AutoModelForSequenceClassification.from_pretrained(
 value_model = policy_model
 
 # ✅ Load Dataset (for RL training)
-dataset = load_dataset("trl-lib/ultrafeedback_binarized", split="train["train_gen"][:1%]")
+dataset = load_dataset("trl-lib/ultrafeedback_binarized", split="train[:70%]")
 
 print("🔍 Dataset Structure BEFORE Mapping:")
 print(dataset.column_names)

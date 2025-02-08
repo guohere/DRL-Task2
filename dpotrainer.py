@@ -4,7 +4,7 @@ from peft import LoraConfig, get_peft_model
 from trl import DPOConfig, DPOTrainer
 
 # ✅ Load Tokenizer
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-SFT/checkpoint-395")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975")
 
 # ✅ Configure Efficient 4-bit Quantization
 quantization_config = BitsAndBytesConfig(
@@ -16,7 +16,7 @@ quantization_config = BitsAndBytesConfig(
 
 # ✅ Load Model with Memory Efficiency
 model = AutoModelForCausalLM.from_pretrained(
-    "Qwen/Qwen2.5-0.5B-SFT/checkpoint-395",
+    "Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975",
     quantization_config=quantization_config,
     device_map="auto"
 )
@@ -35,7 +35,7 @@ lora_config = LoraConfig(
 model = get_peft_model(model, lora_config)
 
 # ✅ Load and Reduce Dataset Size
-dataset = load_dataset("trl-lib/ultrafeedback_binarized", split="train[:15%]")  # ✅ Use 5% of dataset to reduce steps
+dataset = load_dataset("trl-lib/ultrafeedback_binarized", split="train")  # ✅ Use 5% of dataset to reduce steps
 
 # ✅ Configure Efficient DPO Training
 training_args = DPOConfig(
@@ -46,9 +46,9 @@ training_args = DPOConfig(
     optim="paged_adamw_32bit",       # ✅ Optimized for LoRA & quantization
     bf16=True,                       # ✅ Use `bfloat16` if supported
     logging_steps=25,
+    beta=0.1,
     num_train_epochs=1,
-    save_strategy="epoch",
-    max_steps=500                    # ✅ Limit training steps to reduce total steps (Adjustable)
+    save_strategy="epoch"                    # ✅ Limit training steps to reduce total steps (Adjustable)
 )
 
 # ✅ Initialize DPO Trainer

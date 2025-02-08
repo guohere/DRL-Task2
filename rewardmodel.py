@@ -5,7 +5,7 @@ from peft import LoraConfig, get_peft_model
 import torch
 
 # ✅ Load Tokenizer
-tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-Instruct")
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975")
 
 # ✅ Load QLoRA 4-bit Quantization Config
 bnb_config = BitsAndBytesConfig(
@@ -17,7 +17,7 @@ bnb_config = BitsAndBytesConfig(
 
 # ✅ Load Model with Quantization
 model = AutoModelForSequenceClassification.from_pretrained(
-    "Qwen/Qwen2.5-0.5B-Instruct",
+    "Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975",
     num_labels=1,
     quantization_config=bnb_config,  
     device_map="auto",
@@ -45,13 +45,13 @@ model.train()
 model.config.use_cache = False
 
 # ✅ Load Dataset (Use a Subset to Reduce Training Time)
-dataset = load_dataset("trl-lib/ultrafeedback_binarized", split="train[:10%]")  # ✅ Use only 20% for speed
+dataset = load_dataset("trl-lib/ultrafeedback_binarized", split="train[:50%]")  # ✅ Use only 20% for speed
 
 # ✅ Optimized Training Parameters
 training_args = RewardConfig(
     output_dir="Qwen2.5-0.5B-Reward",
-    per_device_train_batch_size=2,  # ✅ Small batch size for memory efficiency
-    gradient_accumulation_steps=16,  # ✅ Reduces memory use
+    per_device_train_batch_size=4,  # ✅ Small batch size for memory efficiency
+    gradient_accumulation_steps=8,  # ✅ Reduces memory use
     num_train_epochs=1,  # ✅ Less training time
     gradient_checkpointing=True,  # ✅ Saves memory
     bf16=True,  # ✅ More stable than fp16

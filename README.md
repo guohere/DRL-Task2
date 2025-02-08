@@ -51,7 +51,15 @@ Qwen2.5-0.5B-DPO/checkpoint-500
 
 8:40pm start 15% dataset, 500 training steps
 
+9.34pm 7/10000
+40 35
+80 38
 * PPO model
 
 ## minimal code 
 
+
+## Task TODO
+* Compare the model performance, and more solid way to evaluate the model
+
+* In detail study the DPO algorithm.
