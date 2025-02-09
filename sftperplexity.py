@@ -20,3 +20,5 @@ ppl_base = compute_perplexity("Qwen/Qwen2.5-0.5B", test_text)
 
 print(f"📊 Perplexity (Base Model): {ppl_base:.2f}")
 print(f"📊 Perplexity (Fine-Tuned Model): {ppl_sft:.2f}")
+
+## reference: https://chatgpt.com/share/67a92c55-d1c4-8011-ad79-9cc182382a63

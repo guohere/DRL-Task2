@@ -1,6 +1,25 @@
 
-
+## Chatbot DPO
 ## code running on DC 107 number 30.
+
+## How to run the code:
+
+* SFT model
+    Python sftmodel.py
+
+* reward model
+    python rewardmodel.py
+
+* dpo model
+    python dpotrainer.py
+
+
+## model inference output samples
+
+    /model_inference
+    Base model sample: Base 
+    SFT model sample: SFT
+    DPO model sample: DPO
 
 ## Code files
 
@@ -30,10 +49,6 @@ to finetuning the SFT model with DPO, with or without reward model, depends on t
 
 evaluating the model performance, using multiple ways, like perplexity, compare reward score and more.
 
-* ppo
-
-(not able to do it yet.)
-
 
 
 ## Model 
@@ -41,25 +56,14 @@ evaluating the model performance, using multiple ways, like perplexity, compare 
 Qwen/Qwen2.5-0.5B
 
 * SFT model
-Qwen/Qwen2.5-0.5B-SFT/checkpoint-395
+Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975
 
 * Reward model
 Qwen2.5-0.5B-Reward/checkpoint-182
 
 * DPO model
-Qwen2.5-0.5B-DPO/checkpoint-500
-
-8:40pm start 15% dataset, 500 training steps
-
-9.34pm 7/10000
-40 35
-80 38
-* PPO model
-
-## minimal code 
+Qwen2.5-0.5B-DPO/checkpoint-5000
 
 
-## Task TODO
-* Compare the model performance, and more solid way to evaluate the model
 
-* In detail study the DPO algorithm.
+

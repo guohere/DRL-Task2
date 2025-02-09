@@ -87,3 +87,5 @@ print(f"📊 Perplexity (Base/SFT/DPO): {ppl_base:.2f} / {ppl_sft:.2f} / {ppl_dp
 print(f"🏆 Reward Score (SFT/DPO): {reward_sft:.2f} / {reward_dpo:.2f}")
 
 print("\n✅ Evaluation Complete!")
+
+## reference: https://chatgpt.com/share/67a92c55-d1c4-8011-ad79-9cc182382a63

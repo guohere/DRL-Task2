@@ -53,3 +53,5 @@ for example in dataset:
 # ✅ Compute Accuracy
 accuracy = correct / total * 100
 print(f"🏆 Reward Model Accuracy: {accuracy:.2f}%")
+
+## reference: https://chatgpt.com/share/67a92c55-d1c4-8011-ad79-9cc182382a63

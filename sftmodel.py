@@ -17,8 +17,8 @@ bnb_config = BitsAndBytesConfig(
 
 # ✅ Load quantized model
 #openai-community/gpt2
-#model_name = "Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975"
-model_name = "openai-community/gpt2"
+model_name = "Qwen/Qwen2.5-0.5B-SFT/checkpoint-1975"
+#model_name = "openai-community/gpt2"
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config=bnb_config,  # Apply QLoRA optimization
@@ -102,3 +102,5 @@ elif not loss.requires_grad:
 
 # ✅ Start training
 trainer.train()
+
+## reference: https://chatgpt.com/share/67a92c55-d1c4-8011-ad79-9cc182382a63
