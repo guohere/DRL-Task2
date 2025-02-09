@@ -5,12 +5,15 @@
 ## How to run the code:
 
 * SFT model
+
     Python sftmodel.py
 
 * reward model
+
     python rewardmodel.py
 
 * dpo model
+
     python dpotrainer.py
 
 
